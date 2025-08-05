@@ -7,14 +7,10 @@ import { Progress } from "@/components/ui/progress";
 import { 
   Plus, 
   Folder, 
-  Play, 
   Brain, 
   Key, 
   ExternalLink,
-  Clock,
-  CheckCircle2,
-  Circle,
-  Terminal
+  Clock
 } from "lucide-react";
 
 const ProductivityWorkspace = () => {
@@ -24,11 +20,6 @@ const ProductivityWorkspace = () => {
     { id: 3, name: "Data Analytics", status: "completed", progress: 100, lastActive: "1 week ago" },
   ]);
 
-  const [tasks] = useState([
-    { id: 1, title: "npm run build", type: "build", status: "ready" },
-    { id: 2, title: "npm run test", type: "test", status: "running" },
-    { id: 3, title: "npm run deploy", type: "deploy", status: "ready" },
-  ]);
 
   const [aiTools] = useState([
     { id: 1, name: "OpenAI GPT-4", status: "configured", usage: "245/500 tokens" },
@@ -100,45 +91,8 @@ const ProductivityWorkspace = () => {
           </Card>
         </div>
 
-        {/* Task Runner Section */}
+        {/* AI Tools Section */}
         <div className="space-y-6">
-          <Card className="p-6 bg-card border-primary/20">
-            <div className="flex items-center gap-2 mb-4">
-              <Terminal className="h-5 w-5 text-cyber-purple" />
-              <h2 className="text-xl font-semibold">Task Runner</h2>
-            </div>
-            
-            <div className="space-y-3">
-              {tasks.map((task) => (
-                <div 
-                  key={task.id}
-                  className="flex items-center justify-between p-3 rounded-lg bg-secondary/30 border border-primary/10"
-                >
-                  <div className="flex items-center gap-3">
-                    {task.status === "running" ? (
-                      <div className="h-2 w-2 bg-cyber-blue rounded-full animate-pulse" />
-                    ) : (
-                      <Circle className="h-4 w-4 text-muted-foreground" />
-                    )}
-                    <div>
-                      <div className="text-sm font-medium">{task.title}</div>
-                      <div className="text-xs text-muted-foreground">{task.type}</div>
-                    </div>
-                  </div>
-                  
-                  <Button 
-                    size="sm" 
-                    variant="ghost"
-                    disabled={task.status === "running"}
-                  >
-                    <Play className="h-3 w-3" />
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </Card>
-
-          {/* AI Tools Section */}
           <Card className="p-6 bg-card border-primary/20">
             <div className="flex items-center gap-2 mb-4">
               <Brain className="h-5 w-5 text-cyber-pink" />
